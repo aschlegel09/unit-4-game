@@ -16,21 +16,27 @@
     <div class="jumbotron container wrapper">
         <div class="col-md-12">
             <div class="row card-body" id="queue">
-                <div class="btn btn-default player dany">
+                <p id="firstClick"></p>
+                <p id="secondClick"></p>
+                <div class="btn btn-default player dany" id="danyId">
+                        <h5 class="card-subtitle text-muted">Danaerys Targaryen</h5>
                     <img class="card" src="assets/images/dany-225.png">
-                    <p>Danaerys Targaryen</p>
+                    <p>140</p>
                 </div>
-                <div class="btn btn-default player jon">
+                <div class="btn btn-default player jon" id="jonId">
+                        <h5 class="card-subtitle text-muted">Jon Snow</h5>
                     <img class="card" src="assets/images/jon_snow-225.png">
-                    <p>Jon Snow</p>
+                    <p>120</p>
                 </div>
-                <div class="btn btn-default player cersei">
+                <div class="btn btn-default player cersei" id="cerseiId">
+                        <h5 class="card-subtitle text-muted">Cersei Lannister</h5>
                     <img class="card" src="assets/images/cersei-lannister-225.png">
-                    <p>Cersei Lannister</p>
+                    <p>180</p>
                 </div>
-                <div class="btn btn-default player king">
+                <div class="btn btn-default player king" id="kingId">
+                        <h5 class="card-subtitle text-muted">Night King</h5>
                     <img class="card" src="assets/images/night-king-225.png">
-                    <p>Night King</p>
+                    <p>200</p>
                 </div>
             </div>
             <div class="col-md-12">
@@ -47,6 +53,7 @@
                 <div class="row attack">
                     <p class="btn btn-danger">Attack</p>
                 </div>
+                <p id="combat-display"></p>
             </div>
             <div class="col-md-12">
                 <div class="row" id="defenders">
