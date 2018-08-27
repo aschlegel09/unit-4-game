@@ -75,6 +75,7 @@ $(".player").on("click", function() {
     fighter += $(this);
     $("#fighter").append($(this));
     isFighterChosen = true;
+    // $(this) += characters[i];
     $(this).off("click");
   } else {
     enemy += $(this);
@@ -102,6 +103,27 @@ $("#attack").on("click", function() {
     isFighterChosen = true;
     gameWon = false;
 
+    
+        // Use parseInt to convert our string representation of numbers into actual integers
+        fighter = parseInt(fighter);
+        enemy = parseInt(enemy);
+
+
+        if ($("#fighter").val("dany")) {
+          console.log("my character is dany");
+        } else if ($("#fighter").val("jon")) {
+          console.log("my character is jon");
+        } else if ($("#fighter").val("cersei")) {
+          console.log("my character is cersei");
+        } else if ($("#fighter").val("king")) {
+          console.log("my character is nightking");
+        };
+
+        $("#combat-display").text(calculateAttack);
+
+        // if (fighter.health = 0) {
+        //   alert 
+        // }
     // if (fighter.hp)
 // calculate battle based on attack power and base attack power
 // if fighter hp = 0, player loses the game, end all
