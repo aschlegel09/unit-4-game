@@ -1,121 +1,118 @@
+// Be sure to adjust base power once first click occurs
+// Set Players as Objects
+var dany = {
+  name: "Danaerys Targaryen",
+  attackPower: 65,
+  basePower: 4,
+  health: 160 + " hp",
+  id: dany
+};
+var jonSnow = {
+  name: "Jon Snow",
+  attackPower: 60,
+  basePower: 5,
+  health: 120 + " hp",
+  id: jonSnow
+};
+var cersei = {
+  name: "Cersei Lannister",
+  attackPower: 70,
+  basePower: 3,
+  health: 140 + " hp",
+  id: cersei
+};
+var nightKing = {
+  name: "Night King",
+  attackPower: 90,
+  basePower: 2,
+  health: 180 + " hp",
+  id: nightKing
+};
 // Provide the initial players as objects with predefined hp and power
-  // Be sure to adjust base power once first click occurs
-  var characters = ["Dany", "Jon Snow", "Cersei", "Night King"];
-  console.log("My fav Game of Thrones characters are: " + characters);
-  // Set Players as Objects
-  var dany = {
-    name: "Danaerys Targaryen",
-    attackPower: 120,
-    basePower: 20,
-    health: 120 + " hp",
-    Selection: ".dany"
-  };
-  var jonSnow = {
-    name: "Jon Snow",
-    attackPower: 120,
-    basePower: 20,
-    health: 120 + " hp",
-    Selection: ".jon"
-  };
-  var cersei = {
-    name: "Cersei Lannister",
-    attackPower: 120,
-    basePower: 20,
-    health: 120 + " hp",
-    Selection: ".cersei"
-  };
-  var nightKing = {
-    name: "Night King",
-    attackPower: 120,
-    basePower: 20,
-    health: 120 + " hp",
-    Selection: ".king"
-  };
-  console.log(dany.name);
-  console.log("Jon Snow's health is " + jonSnow.health);
-  console.log("Cersei Lannister's attack power is " + cersei.attackPower);
-  console.log("The Night King's base power is " + nightKing.basePower);
-  var fighterOne = $("#fighter").length; // the first clicked player is equal to the first section div
-  var enemyOne = $("#enemies").length;
-  var defenderOne = $("#defenders").length;
-  var playerMagnet = $(".player");
-  var jonDiv = $(".jon");
-  var danyDiv = $(".dany");
-  var kingDiv = $(".king");
-  var cerseiDiv = $(".cersei");
-  // var playerBtn = $("<div>");
-  // Create an on click event attached to the player class
-  // Move Player to Fighter position on first click
-  $("#danyId").on("click", function() {
-    // goes thru characters array of objects, and should find each one is linked to its specific character div
-    for (var i = 0; i < danyDiv.length; i++) {
-      //for each object in array...
-      console.log("My character is " + characters[0]);
+var characters = [dany, jonSnow, cersei, nightKing];
+console.log(characters[0]);
+console.log(characters[1]);
+console.log(characters[2]);
+console.log(characters[3]);
+console.log(dany.name);
+console.log("Jon Snow's health is " + jonSnow.health);
+console.log("Cersei Lannister's attack power is " + cersei.attackPower);
+console.log("The Night King's base power is " + nightKing.basePower);
 
-      if (fighterOne >= 1) {
-        $("#fighter").append($(danyDiv));
-        $("p#firstClick").text("Choose Your Enemy.");
-      }
-      console.log(playerMagnet);
-    }
-  });
-  $("#jonId").on("click", function() {
-    for (var i = 0; i < jonDiv.length; i++) {
-      console.log("My character is " + characters[1]);
+var fighter = [];
+var enemy = [];
+var defender = [];
+var combatDisplay = "";
+var isFighterChosen = false;
+var isEnemyChosen = false;
+var isAttackPressed = false;
+var calculateAttack = 0;
+var gameWon = false;
 
-      if (fighterOne >= 1) {
-        $("#fighter").append($(jonDiv));
-        $("p#firstClick").text("Choose Your Enemy.");
-      }
-    }
-  });
-  $("#cerseiId").on("click", function() {
-    for (var i = 0; i < cerseiDiv.length; i++) {
-      console.log("My character is " + characters[2]);
-      if (fighterOne >= 1) {
-        $("#fighter").append($(cerseiDiv));
-        $("p#firstClick").text("Choose Your Enemy.");
-      }
-    }
-  });
-  $("#kingId").on("click", function() {
-    for (var i = 0; i < kingDiv.length; i++) {
-      console.log("My character is " + characters[3]);
-      if (fighterOne >= 1) {
-        $("#fighter").append($(kingDiv));
-        $("p#firstClick").text("Choose Your Enemy.");
-      }
-    }
-  });
-  $(".attack").on("click", function() {
-    // Press Attack Button to begin Combat
-    //Event Handler: Return
-    console.log(event.target.textContent + event.detail);
-    $("p#combat-display").text("Combat has ensued!"); //need to adjust p tags in html
-    // for loop that runs if they press the button, increment the attack power upwards for the fighter
-    // another if statement that if the button is pressed, display the attack damage from defeneder, return new health level
-    // inside that if statement, another if to determine if fighter hp is lower than 0, return you lose
-    // if enemy hp is lower than 0,
-    // Defender hiddem when HP = 0
-    // dispay next enemy,
-    // when there are no enemies, display you won
-    //
-  });
+// function to begin game
+function beginGame() {
+  fighter = "";
+  enemy = "";
+  defender = "";
+  combatDisplay = "";
+  isFighterChosen = false;
+  isEnemyChosen = false;
+  isAttackPressed = false;
+  calculateAttack = 0;
+  gameWon = false;
+
+  $("#fighter, #enemy, #defender, #combat-display").empty();
+}
+
+// Create an on click event attached to the player class
+// one to fighter, one to enemy, the others to defender
+// if the fighter is moved to the fighter div, set fighterchosen to true
+// if the enemy is moved to the enemy div, set enemychosen to true and
+// move the remaining players to defender
+$(".player").on("click", function() {
+  //check if we've chosen a fighter already
+  if (!isFighterChosen) {
+    fighter += $(this);
+    $("#fighter").append($(this));
+    isFighterChosen = true;
+    $(this).off("click");
+  } else {
+    enemy += $(this);
+    $("#enemy").append($(this));
+    isEnemyChosen = true;
+    // automatically send defenders to their section once enemy is chosen
+    $("#defender").append($("#queue"));
+    // do not allow click on defenders
+    $(".player").off("click");
+    // defender = $("#defender");
+    // $("#defender").off("click");
+  }
 });
 
-// if the danyDiv, jonDiv, cerseiDiv, kingDiv is equal to fighterDiv
-// then on click brings chosen div to the enemy section
-// and brings the remaining characters to the defender section
-//
-//apply this working code to second and third clicks
-// $("#danyId").on("click", function() {
-//   for (var i = 0; i < danyDiv.length; i++) {
-//   console.log("My character is " + characters[i]);
-//   if (enemyOne >= 1) {
-//         $("#enemies").append($(jonDiv));
-//       }
-//       if (defenderOne >= 1) {
-//         $("#defenders").append($(kingDiv));
-//         $("#defenders").append($(cerseiDiv));
-//       }}
-// }});
+$("#attack").on("click", function() {
+  // check if fighter and enemy have been chosen
+  // or we've already won, we exit
+  if (!isFighterChosen || !isEnemyChosen || gameWon) {
+    return false;
+  } else {//less we display combat begins
+    console.log(event.target.textContent + event.detail);
+    $("p#combat-display").text("Combat has ensued!");
+
+    isEnemyChosen = true;
+    isFighterChosen = true;
+    gameWon = false;
+
+    // if (fighter.hp)
+// calculate battle based on attack power and base attack power
+// if fighter hp = 0, player loses the game, end all
+// if enemy hp = 0, enemy is hidden and the next defender is added to enemy
+  }
+  // set isEnemyChosen to true so we can begin combat
+  // isFighterChosen = true;
+  // isEnemyChosen = true;
+  // store off the combat calculations
+  // calculateAttack = true;
+  // set Html of #combat-display equal to the calculateAttack function
+  // calculateAttack();
+  // $("#combat-display").text($(calculateAttack));
+});
