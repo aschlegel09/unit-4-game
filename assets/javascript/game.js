@@ -1,298 +1,227 @@
-// Click a player button to choose as your Fighter
-$(document).ready(function() {
-<<<<<<< HEAD
-    // Provide the initial players as objects with predefined hp and power
-    // Be sure to adjust base power once first click occurs
-    var characters = ["Dany", "Jon Snow", "Cersei", "Night King"];
-    console.log("My fav Game of Thrones characters are: " + characters);
-      
-      var dany = {
-      name : "Danaerys Targaryen",
-      attackPower : 120,
-      basePower : 20,
-      health : 120 + " hp",
-  //    $(".dany")
-    };
-    var jonSnow = {
-      name : "Jon Snow",
-      attackPower : 120,
-      basePower : 20,
-      health : 120 + " hp",
-  //    $(".jon")
-    };
-    var cersei = {
-      name : "Cersei Lannister",
-      attackPower : 120,
-      basePower : 20,
-      health : 120 + " hp",
-  //    $(".cersei")
-    };
-    var nightKing = {
-      name : "Night King",
-      attackPower : 120,
-      basePower : 20,
-      health : 120 + " hp",
-  //    $(".king")
-    };
-      console.log(dany.name);
-      console.log("Jon Snow's health is " + jonSnow.health);
-      console.log("Cersei Lannister's attack power is " + cersei.attackPower);
-      console.log("The Night King's base power is " + nightKing.basePower);
-  
-  
-      
-   var fighterOne = $("#fighter").length; // the first clicked player is equal to the first section div
-      var fighterTwo = $("#enemies").length;
-      var fighterThree = $("#defenders").length;
-      var playerMagnet = $(".player");
-      var jonDiv = $(".jon");
-      var danyDiv = $(".dany");
-      var kingDiv = $(".king");
-      var cerseiDiv = $(".cersei");
-      
-      
-      
-      
-    // var playerBtn = $("<div>");
-    // Create an on click event attached to the player class
-    $("#danyId").on("click", function() {
-        // goes thru characters array of objects, and should find each one is linked to its specific character div
-      for (var i = 0; i < danyDiv.length; i++) {
-      //for each object in array...	
-          console.log("My character is " + characters[i]);
-  
-      if (fighterOne >= 1) {
-        $("#fighter").append($(danyDiv));
-        $("p#firstClick").text("Choose Your Enemy.");
-      }
+// Execute this code when the DOM has fully loaded.
+$(document).ready(function () {
 
-      console.log(playerMagnet);
-    }});
-    $("#jonId").on("click", function() {
-        // goes thru characters array of objects, and should find each one is linked to its specific character div
-      for (var i = 0; i < jonDiv.length; i++) {
-      //for each object in array...	
-          console.log("My character is " + characters[i]);
-  
-      if (fighterOne >= 1) {
-        $("#fighter").append($(jonDiv));
-        $("p#firstClick").text("Choose Your Enemy.");
-      }
-    }});
-    $("#cerseiId").on("click", function() {
-        // goes thru characters array of objects, and should find each one is linked to its specific character div
-      for (var i = 0; i < cerseiDiv.length; i++) {
-      //for each object in array...	
-          console.log("My character is " + characters[i]);
-  
-      if (fighterOne >= 1) {
-        $("#fighter").append($(cerseiDiv));
-        $("p#firstClick").text("Choose Your Enemy.");
-      }
-    }});
-    $("#kingId").on("click", function() {
-        // goes thru characters array of objects, and should find each one is linked to its specific character div
-      for (var i = 0; i < kingDiv.length; i++) {
-      //for each object in array...	
-          console.log("My character is " + characters[i]);
-  
-      if (fighterOne >= 1) {
-        $("#fighter").append($(kingDiv));
-        $("p#firstClick").text("Choose Your Enemy.");
-      }
-    }});
-      //apply this working code to second and third clicks
-    //   if (fighterTwo >= 1) {
-    //     $("#enemies").append($(jonDiv));
-    //   }
-    //   if (fighterThree >= 1) {
-    //     $("#defenders").append($(kingDiv));
-    //     $("#defenders").append($(cerseiDiv));
-    //   }
-      // Create a variable playerMagnet and set equal to a new div
-  
-      // Give each player div specific classes..............skip
-      // attr acts as a setter and getter for attributes
-      // playerMagnet.text($(this).attr("data-letter"));
-      // append var to result div
-      // $("#fighter").append(playerMagnet);
-    
-    // Move Player to Fighter position on first click
-    //   $(".player").on("click", function() {
-    //     $("#").appendTo(player);
-    //   });
-  
-    // Move first clicked player to Fighter Row
-    // Remaining Players move to Enemies Row
-    // Click on an Enemy player and move them to the Defender section
-     $(".attack").on("click", function() {
-        // Press Attack Button to begin Combat
-        //Event Handler: Return
-         console.log(event.target.textContent + event.detail);
-        $("p#combat-display").text("Combat has ensued!");//need to adjust p tags in html
-         
-         
-        });
-    // Defender hiddem when HP = 0
-    // When there is no player to attack, Remind them
-    // Set Players as Objects
-    // Set order of events by click -- Character, Enemies, Defender, Attack button
-    // Ordered Objects in an array and set them to each section
-    // Attack points increase by base attack power ONLY for your chosen Fighter(first click)
-    //
-  });
-  
-=======
-  // Provide the initial players as objects with predefined hp and power
-  // Be sure to adjust base power once first click occurs
-  var characters = ["Dany", "Jon Snow", "Cersei", "Night King"];
-  console.log("My fav Game of Thrones characters are: " + characters);
-  // Set Players as Objects
-  var dany = {
-    name: "Danaerys Targaryen",
-    attackPower: 120,
-    basePower: 20,
-    health: 120 + " hp",
-    Selection: ".dany"
-  };
-  var jonSnow = {
-    name: "Jon Snow",
-    attackPower: 120,
-    basePower: 20,
-    health: 120 + " hp",
-    Selection: ".jon"
-  };
-  var cersei = {
-    name: "Cersei Lannister",
-    attackPower: 120,
-    basePower: 20,
-    health: 120 + " hp",
-    Selection: ".cersei"
-  };
-  var nightKing = {
-    name: "Night King",
-    attackPower: 120,
-    basePower: 20,
-    health: 120 + " hp",
-    Selection: ".king"
-  };
-  console.log(dany.name);
-  console.log("Jon Snow's health is " + jonSnow.health);
-  console.log("Cersei Lannister's attack power is " + cersei.attackPower);
-  console.log("The Night King's base power is " + nightKing.basePower);
-  var fighterOne = $("#fighter").length; // the first clicked player is equal to the first section div
-  var enemyOne = $("#enemies").length;
-  var defenderOne = $("#defenders").length;
-  var playerMagnet = $(".player");
-  var jonDiv = $(".jon");
-  var danyDiv = $(".dany");
-  var kingDiv = $(".king");
-  var cerseiDiv = $(".cersei");
-  // var playerBtn = $("<div>");
-  // Create an on click event attached to the player class
-  // Move Player to Fighter position on first click
-  $("#danyId").on("click", function() {
-    // goes thru characters array of objects, and should find each one is linked to its specific character div
-    for (var i = 0; i < danyDiv.length; i++) {
-      //for each object in array...
-      console.log("My character is " + characters[0]);
+	// object to hold our characters
+	var characters = {
+		"Danaerys Targaryen": {
+			name: "Danaerys Targaryen",
+			attackPower: 10,
+			enemyPower: 19,
+			health: 160,
+			imageUrl: "assets/images/dany-225.png",
+		},
+		"Jon Snow": {
+			name: "Jon Snow",
+			attackPower: 14,
+			enemyPower: 15,
+			health: 120,
+			imageUrl: "assets/images/jon_snow-225.png",
+		},
+		"Cersei Lannister": {
+			name: "Cersei Lannister",
+			attackPower: 8,
+			enemyPower: 20,
+			health: 180,
+			imageUrl: "assets/images/cersei-lannister-225.png",
+		},
+		"Night King": {
+			name: "Night King",
+			attackPower: 11,
+			enemyPower: 25,
+			health: 220,
+			imageUrl: "assets/images/night-king-225.png",
+		}
+	};
+	
+	// Will be populated when the player selects a character.
+	var fighter;
+	// Populated with all the characters the player didn't select.
+	var defender = [];
+	// Will be populated when the player chooses an opponent.
+	var enemy;
+	// Tracks number of defeated opponents.
+	var killCount = 0;
+	// Will keep track of turns during combat. Used for calculating player damage.
+	var turnCounter = 1;
 
-      if (fighterOne >= 1) {
-        $("#fighter").append($(danyDiv));
-        $("p#firstClick").text("Choose Your Enemy.");
-      }
-      console.log(playerMagnet);
-    }
-  });
-  $("#jonId").on("click", function() {
-    for (var i = 0; i < jonDiv.length; i++) {
-      console.log("My character is " + characters[1]);
+	
+// Begin functions
+	// This function will render a player card to the page.
+	// The player character rendered, the area they are rendered to, and their status is determined by the arguments passed in.
+	var renderPlayer = function (player, renderArea) {
+		// This block of code builds the character card, and renders it to the page.
+		var playerDiv = $("<div class='player' data-name='" + player.name + "'>");
+		var playerName = $("<div class='player-name'>").text(player.name);
+		var playerImage = $("<img alt='image' class='player-image'>").attr("src", player.imageUrl);
+		var playerHealth = $("<div class='player-health'>").text(player.health);
+		playerDiv.append(playerName).append(playerImage).append(playerHealth);
+		$(renderArea).append(playerDiv);
+	};
 
-      if (fighterOne >= 1) {
-        $("#fighter").append($(jonDiv));
-        $("p#firstClick").text("Choose Your Enemy.");
+	// this function will load all the players into the players section to be selected
+	var beginGame = function () {
+		// Loop through the characters object and call the renderPlayer function on each player to render their card.
+		for (var key in characters) {
+			renderPlayer(characters[key], "#players-section");//use (object[key], "div #id")
+		}
+	};
+
+	// remember to run the function here
+	beginGame();
+	
+	// This function handles updating the selected player or the current defender. If there is no selected player/defender this
+  // function will also place the character based on the areaRender chosen (e.g. #selected-character or #defender)
+  var updatePlayer = function(playerObj, areaRender) {
+    // First we empty the area so that we can re-render the new object
+    $(areaRender).empty();
+    renderPlayer(playerObj, areaRender);
+  };
+	
+	// This function will render the available-to-attack enemies. This should be run once after a character has been selected
+  var renderEnemies = function(enemyArr) {
+    for (var i = 0; i < enemyArr.length; i++) {
+      renderPlayer(enemyArr[i], "#other-enemy");// add div id to remaining enemy section
+    }
+  };
+	
+	// Function to handle rendering game messages.
+  var renderMessage = function(message) {
+    // Builds the message and appends it to the page.
+    var gameMessageSet = $("#combat-display");// div id for attack section
+    var newMessage = $("<div>").text(message);
+    gameMessageSet.append(newMessage);
+  };
+	
+  // Function which handles restarting the game after victory or defeat.
+  var restartGame = function(resultMessage) {
+    // When the 'Restart' button is clicked, reload the page.
+    var restart = $("<button>Restart</button>").click(function() {
+      location.reload();
+    });
+	  
+	  // Build div that will display the victory/defeat message.
+    var gameState = $("<div>").text(resultMessage);
+	  
+	  // Render the restart button and victory/defeat message to the page.
+    $("body").append(gameState);
+    $("body").append(restart);
+  };
+	
+	// Function to clear the game message section
+  var clearMessage = function() {
+    var gameMessage = $("#combat-display");
+
+    gameMessage.text("");
+  };
+// End of functions
+
+	
+	// Create an on click event attached to the player class
+	// one to fighter, one to enemy, the others to defender
+	// if the fighter is moved to the fighter div, set fighterchosen to true
+	// if the enemy is moved to the enemy div, set enemychosen to true and
+	// move the remaining players to defender
+	$("#players-section").on("click", ".player", function () { //players section is div above fighter section
+		 // Saving the clicked character's name.
+    var name = $(this).attr("data-name");
+		//check if we've chosen a fighter already
+		if (!fighter) {
+			 // We populate fighter with the selected character's information.
+			fighter = characters[name];
+		// We then loop through the remaining characters and push them to the defender array.
+      for (var key in characters) {
+        if (key !== name) {
+          defender.push(characters[key]);
+        }
       }
+      // Hide the character select div.
+      $("#players-section").hide();
+
+      // Then render our selected character and our defender.
+      updatePlayer(fighter, "#selected-character");//fighter-section character
+      renderEnemies(defender);
     }
   });
-  $("#cerseiId").on("click", function() {
-    for (var i = 0; i < cerseiDiv.length; i++) {
-      console.log("My character is " + characters[2]);
-      if (fighterOne >= 1) {
-        $("#fighter").append($(cerseiDiv));
-        $("p#firstClick").text("Choose Your Enemy.");
-      }
+	
+	// Creates an on click event for each enemy.
+  $("#other-enemy").on("click", ".player", function() {
+    // Saving the opponent's name.
+    var name = $(this).attr("data-name");
+
+    // If there is no enemy, the clicked player will become the enemy.
+    if ($("#enemy").children().length === 0) {
+      enemy = characters[name];
+      updatePlayer(enemy, "#enemy");
+
+      // remove element as it will now be a new enemy
+      $(this).remove();
+      clearMessage();
     }
   });
-  $("#kingId").on("click", function() {
-    for (var i = 0; i < kingDiv.length; i++) {
-      console.log("My character is " + characters[3]);
-      if (fighterOne >= 1) {
-        $("#fighter").append($(kingDiv));
-        $("p#firstClick").text("Choose Your Enemy.");
+	
+	
+	
+	 // When you click the attack button, run the following game logic...
+  $("#attack-button").on("click", function() {
+    // If there is an enemy, combat will occur.
+    if ($("#enemy").children().length !== 0) {
+      // Creates messages for our attack and our opponents counter attack.
+      var attackMessage = "You attacked " + enemy.name + " for " + fighter.attackPower * turnCounter + " damage.";
+      var counterAttackMessage = enemy.name + " attacked you back for " + enemy.enemyPower + " damage.";
+      clearMessage();
+
+      // Reduce defender's health by your attack value.
+      enemy.health -= fighter.attackPower * turnCounter;
+
+      // If the enemy still has health..
+      if (enemy.health > 0) {
+        // Render the enemy's updated player card.
+        updatePlayer(enemy, "#enemy");
+
+        // Render the combat messages.
+        renderMessage(attackMessage);
+        renderMessage(counterAttackMessage);
+
+        // Reduce your health by the opponent's attack value.
+        fighter.health -= enemy.enemyPower;
+
+        // Render the player's updated character card.
+        updatePlayer(fighter, "#selected-character");
+
+        // If you have less than zero health the game ends.
+        // We call the restartGame function to allow the user to restart the game and play again.
+        if (fighter.health <= 0) {
+          clearMessage();
+          restartGame("You have been defeated...GAME OVER!");
+          $("#attack-button").off("click");
+        }
       }
+      else {
+        // If the enemy has less than zero health they are defeated.
+        // Remove your opponent's character card.
+        $("#enemy").empty();
+
+        var gameStateMessage = "You have defeated " + enemy.name + ", you can choose to fight another enemy.";
+        renderMessage(gameStateMessage);
+
+        // Increment your kill count.
+        killCount++;
+
+        // If you have killed all of your opponents you win.
+        // Call the restartGame function to allow the user to restart the game and play again.
+        if (killCount >= defender.length) {
+          clearMessage();
+          $("#attack-button").off("click");
+          restartGame("You Won! GAME OVER!");
+        }
+      }
+      // Increment turn counter. This is used for determining how much damage the player does.
+      turnCounter++;
     }
-  });
-  $(".attack").on("click", function() {
-    // Press Attack Button to begin Combat
-    //Event Handler: Return
-    console.log(event.target.textContent + event.detail);
-    $("p#combat-display").text("Combat has ensued!"); //need to adjust p tags in html
-    // for loop that runs if they press the button, increment the attack power upwards for the fighter
-    // another if statement that if the button is pressed, display the attack damage from defeneder, return new health level
-    // inside that if statement, another if to determine if fighter hp is lower than 0, return you lose
-    // if enemy hp is lower than 0,
-    // Defender hiddem when HP = 0
-    // dispay next enemy,
-    // when there are no enemies, display you won
-    //
+    else {
+      // If there is no enemy, render an error message.
+      clearMessage();
+      renderMessage("No enemy here.");
+    }
   });
 });
-
-// if the danyDiv, jonDiv, cerseiDiv, kingDiv is equal to fighterDiv
-// then on click brings chosen div to the enemy section
-// and brings the remaining characters to the defender section
-//
-//apply this working code to second and third clicks
-// $("#danyId").on("click", function() {
-//   for (var i = 0; i < danyDiv.length; i++) {
-//   console.log("My character is " + characters[i]);
-//   if (enemyOne >= 1) {
-//         $("#enemies").append($(jonDiv));
-//       }
-//       if (defenderOne >= 1) {
-//         $("#defenders").append($(kingDiv));
-//         $("#defenders").append($(cerseiDiv));
-//       }}
-// }});
-
-<<<<<<< HEAD
-// Set order of events by click -- Character, Enemies, Attack button
-// Attack points increase by base attack power ONLY for your chosen Fighter (first click)
-
-// playerMagnet.text($(this).attr("data-letter"));
-// append var to result div
-//   $(".player").on("click", function() {
-//     $("#").appendTo(player);
-//   });
-=======
-  // Move first clicked player to Fighter Row
-  // Remaining Players move to Enemies Row
-  // Click on an Enemy player and move them to the Defender section
-   $(".attack").on("click", function() {
-	  // Press Attack Button to begin Combat
-	  //Event Handler: Return
-	   console.log(event.target.textContent + event.detail);
-	  $("p").text("Combat has ensued!");//need to adjust p tags in html
-	   
-	   
-	  });
-  // Defender hiddem when HP = 0
-  // When there is no player to attack, Remind them
-  // Set Players as Objects
-  // Set order of events by click -- Character, Enemies, Defender, Attack button
-  // Ordered Objects in an array and set them to each section
-  // Attack points increase by base attack power ONLY for your chosen Fighter(first click)
-  //
-});
->>>>>>> cc20d99e9a61d82dee73418a9860077c72849d70
->>>>>>> d855a20ab7ff6d64bad869e12203601e2679ba6e
